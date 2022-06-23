@@ -1,0 +1,110 @@
+<mvc:View
+    controllerName="edu.ap.be.zsd042gameapp.controller.Detail"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <semantic:SemanticPage
+        id="detailPage"
+        busy="{detailView>/busy}"
+        busyIndicatorDelay="{detailView>/delay}">
+        <semantic:titleHeading>
+            <Title
+                text="{Name}"
+                level="H2"/>
+        </semantic:titleHeading>
+        <semantic:headerContent>
+            <ObjectAttribute title="{i18n>Game details}"/>
+            <ObjectNumber />
+        </semantic:headerContent>
+        <semantic:content>
+
+        <f:SimpleForm id="SimpleFormDisplay354"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+            <!--
+                <Label text="{i18n>name}" />
+                <Text id="nameText" text="{Name}" />
+                <Label text="{i18n>firstname}" />
+                <Text text="{Firstname}" />
+
+                <Label text="{i18n>date_of_birth}" />
+                <Text text="{path: 'DateOfBirth',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {style : 'full', source:{ pattern :'yyyyMMdd'}}}" />
+                <Label text="{i18n>Type}" />
+                <Text id="TypeText" text="{Type}" />
+-->
+                <Label text="{i18n>name}" />
+                <Input
+                    placeholder="{i18n>name}"
+                    value="{Name}" />
+
+                <Label text="{i18n>developer}" />
+                <Input
+                    placeholder="{i18n>developer}"
+                    value="{Developer}" />
+                
+                <Label text="{i18n>release_date}"/>
+		        <DatePicker
+                    value="{ReleaseDate}"
+                />
+                <Label text="{i18n>genre}" />
+                <Input
+                    placeholder="{i18n>genre}"
+                    value="{Genre}" />
+
+            </f:content>
+		</f:SimpleForm>
+
+        </semantic:content>
+        <!--Semantic ShareMenu Buttons-->
+        <semantic:closeAction>
+            <semantic:CloseAction
+                    id="closeColumn"
+                    press=".onCloseDetailPress"/>
+        </semantic:closeAction>
+
+
+
+        <semantic:fullScreenAction>
+            <semantic:FullScreenAction
+                    id="enterFullScreen"
+                    visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+                    press=".toggleFullScreen"/>
+        </semantic:fullScreenAction>
+        <semantic:exitFullScreenAction>
+            <semantic:ExitFullScreenAction
+                    id="exitFullScreen"
+                    visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}"
+                    press=".toggleFullScreen"/>
+        </semantic:exitFullScreenAction>
+
+        <semantic:positiveAction>
+			<semantic:PositiveAction text="{i18n>save}" press="onSave" />
+		</semantic:positiveAction>
+
+		<semantic:negativeAction>
+			<semantic:NegativeAction text="{i18n>cancel}" />
+		</semantic:negativeAction>
+
+    </semantic:SemanticPage>
+
+</mvc:View>
